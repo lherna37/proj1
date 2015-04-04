@@ -1,3 +1,20 @@
-<h3>Trainer</h3>
+<h2>Trainer</h2>
 <p>Name: <%= @trainer.name if @trainer.name %></p>
 <p>Email: <%= @trainer.email if @trainer.email %></p>
+
+
+<h3> Pokemon </h3>
+<% Pokemon.all.each do |list_out| %>
+	<p> Name: <%= list_out.name %> </p>
+	<p>Level: <%= list_out.level %> </p>
+	<p> Health: <%= list_out.health %> </p>
+
+	<%= button_to "Damage Pokemon!", damage_path(id: @pokemon), :class => "button medium", :method => :patch %>
+	  <% if @pokemon.health <= 0 %>
+	     <% @pokemon.destroy %>
+	      <% end %>
+<% end %>
+
+<% if current_trainer %>
+    <%= link_to "Create New Pokemon", trainer_path %>
+ <% end %> 

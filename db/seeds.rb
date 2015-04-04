@@ -15,3 +15,9 @@ end
 %w(Ash Gary Misty Brock).each do |name|
   Trainer.create name: name, email: name+"@pokeportal.com", password: 'password'
 end
+
+#Make all Pokemon start with 100 health
+Pokemon.all.each do |get_healthy|
+  get_healthy.health = 100
+  get_healthy.save
+end
